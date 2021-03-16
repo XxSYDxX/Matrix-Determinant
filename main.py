@@ -9,11 +9,10 @@ matrix = [
     [69, 98, 41, 23, 54, 33, 12],
 ] # det(matrix) = -416561511505
 
-# Use the (1, 1)*(2, 2) - (0, 1)*(1, 0) formula to calculate a 2x2 matrix
+# Uses the (1, 1)*(2, 2) - (0, 1)*(1, 0) formula to calculate a 2x2 matrix determinant
 # Then multiplies that with the entry it is a minor of, which is an essential part of the algorithm used
-# is_modified is a boolean value
 # is_modified is set to False if the matrix is an usual 2D list of entries
-# is_modified is set to True when the last element of the list (matrix[-1]) is the entry of the original matrix that the matrix passed into the function is a minor of
+# is_modified is set to True when the last element of the list is the entry of the original matrix that the passed matrix is a minor of
 def two_x_two_determinant(matrix, is_modified):
     """ Calculates the determinant of a 2x2 matrix and multplies it with the entry it is a minor of """
     det_two_x_two = (matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0])
