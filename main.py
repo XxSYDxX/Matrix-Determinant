@@ -16,7 +16,7 @@ def two_x_two_determinant(matrix):
 
 # is_modified is a boolean value
 # is_modified is set to False if the matrix is an usual 2D list of entries
-# is_modified is set to True when the last element of the matrix (matrix[-1]) is the entry of the original matrix that the matrix passed into the function is a minor of
+# is_modified is set to True when the last element of the list (matrix[-1]) is the entry of the original matrix that the matrix passed into the function is a minor of
 def dimensions(matrix, is_modified):
     """ Calculates the dimension of the matrix passed as an argument to the function """
     rows = len(matrix)-1 if is_modified else len(matrix)    # omits the last entry in list when is_modified is True
