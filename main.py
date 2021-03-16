@@ -32,7 +32,7 @@ def dimensions(matrix, is_modified):
 # Also the algorithm is slightly different than the algorithm used in traditional manual matrix solving on paper
 def cofactor_multiple(matrix, is_modified, i, j):
     """ Returns the cofactor of the entry, and the entry of matrix at (i, j) as last element """
-    # if the matrix is a modified list, the entry at (i, j) needs the multiplied with already existing last element of the provided matrix
+    # if the matrix is a modified list, the entry at (i, j) needs to be multiplied with the already existing last element of the provided matrix
     factor = matrix[i][j] if not is_modified else matrix[i][j] * matrix[-1]
     # tradional indices start at (1, 1)
     i += 1
