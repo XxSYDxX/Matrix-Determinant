@@ -9,6 +9,8 @@ matrix = [
     [69, 98, 41, 23, 54, 33, 12],
 ] # det(matrix) = -416561511505
 
+# Use the (1, 1)*(2, 2) - (0, 1)*(1, 0) formula to calculate a 2x2 matrix
+# Then multiplies that with the entry it is a minor of, which is an essential part of the algorithm used
 def two_x_two_determinant(matrix):
     """ Calculates the determinant of a 2x2 matrix and multplies it with the entry it is a minor of """
     return (matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]) * matrix[-1]
@@ -24,6 +26,10 @@ def dimensions(matrix, is_modified):
     return rows, columns
 
 
+# Calculate the cofactor and return a number which is the cofactor of entry (i, j) times the entry itself
+# The cofactor is multiplied with the entry here because of how the algorithm of this program works
+# Which is original but not necessarily effective or fast
+# Also the algorithm is slightly different than the algorithm used in traditional manual matrix solving on paper
 def cofactor_multiple(matrix, is_modified, i, j):
     """ Returns the cofactor of the entry, and the entry of matrix at (i, j) as last element """
     # if the matrix is a modified list, the entry at (i, j) needs the multiplied with already existing last element of the provided matrix
@@ -34,6 +40,8 @@ def cofactor_multiple(matrix, is_modified, i, j):
     return ((-1) ** (i+j)) * factor
 
 
+# Calculate not only the minor, but also the entry*cofactor using the cofactor_multiple function
+# This entry*cofactor is returned as the last element of a list while the elements preceding are essentially the rows of the required minor
 def minor_multiple(matrix, is_modified, i, j):
     """ Returns the minor, and the cofactor_multiple of the entry at index (i, j) as last element """
     minor_matrix = []
@@ -68,6 +76,7 @@ def minor_multiple(matrix, is_modified, i, j):
         return minor_matrix + [cofactor_multiple(matrix, is_modified, i, j), ]
 
 
+# Uses the "original algorithm" here
 def det(matrix):
     """ Calculates the determinant of provided matrix """
     modification = False
