@@ -11,14 +11,15 @@ matrix = [
 
 # Use the (1, 1)*(2, 2) - (0, 1)*(1, 0) formula to calculate a 2x2 matrix
 # Then multiplies that with the entry it is a minor of, which is an essential part of the algorithm used
-def two_x_two_determinant(matrix):
-    """ Calculates the determinant of a 2x2 matrix and multplies it with the entry it is a minor of """
-    return (matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]) * matrix[-1]
-
-
 # is_modified is a boolean value
 # is_modified is set to False if the matrix is an usual 2D list of entries
 # is_modified is set to True when the last element of the list (matrix[-1]) is the entry of the original matrix that the matrix passed into the function is a minor of
+def two_x_two_determinant(matrix, is_modified):
+    """ Calculates the determinant of a 2x2 matrix and multplies it with the entry it is a minor of """
+    det_two_x_two = (matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0])
+    return det_two_x_two * matrix[-1] if is_modified else det_two_x_two
+
+
 def dimensions(matrix, is_modified):
     """ Calculates the dimension of the matrix passed as an argument to the function """
     rows = len(matrix)-1 if is_modified else len(matrix)    # omits the last entry in list when is_modified is True
@@ -108,7 +109,7 @@ def det(matrix):
     determinant = 0
     # find determinant of each 2x2 minor_multiple and take summation, which returns our desired determinant
     for minor_matrix in minor_list:
-        determinant += two_x_two_determinant(minor_matrix)
+        determinant += two_x_two_determinant(minor_matrix, modification)
 
     return determinant
 
