@@ -121,9 +121,9 @@ determinant = det(matrix)
 for row_index in range(len(matrix)):
     row = matrix[row_index]
     midline = (dimensions(matrix, 0)[0]-1) // 2
-    print("    |" if row_index != midline else "det |", end=" ")
+    print("    "+u'\u2503' if row_index != midline else "det "+u'\u2503', end=" ")
     for entry in row:
         print(entry, end=" ")
         
-    print("|" if row_index != midline else "| = "+str(determinant))
+    print(u'\u2503' if row_index != midline else u'\u2503'+" = "+str(determinant))
         
